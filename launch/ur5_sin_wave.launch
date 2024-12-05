@@ -1,0 +1,7 @@
+<launch>
+    <!-- Launch the UR5 robot Gazebo -->
+    <include file="$(find ur_gazebo)/launch/ur5_bringup.launch"/>
+    
+    <!-- Launch the custom sine wave joint control node -->
+    <node name="sin_wave_publisher" pkg="ur5_control" type="sin_wave_publisher.py" output="screen"/>
+</launch>
