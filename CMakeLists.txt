@@ -7,20 +7,20 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
 )
 
-###################################
-## catkin specific configuration ##
-###################################
+## catkin specific configuration
 catkin_package(
   CATKIN_DEPENDS rospy std_msgs
 )
 
-#############
-## Install ##
-#############
-
-## Mark executable scripts (Python etc.) for installation
+## Install Python scripts
 catkin_install_python(PROGRAMS
+  scripts/cartesian.py
   scripts/sin_wave_publisher.py
-  scripts/motion_library.py   ## only for testing
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
+
+install(DIRECTORY scripts/ur5_motion_library/
+    DESTINATION ${CATKIN_PACKAGE_PYTHON_DESTINATION}/ur5_motion_library
+    FILES_MATCHING PATTERN "*.py"
+)
+
