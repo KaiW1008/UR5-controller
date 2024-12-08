@@ -1,0 +1,7 @@
+<launch>
+    <!-- Launch the UR5 robot Gazebo -->
+    <include file="$(find ur_gazebo)/launch/ur5_bringup.launch"/>
+    
+    <!-- Launch the motion 1 control node -->
+    <node name="ur5_motion_1" pkg="ur5_control" type="motion1_test.py" output="screen"/>
+</launch>
