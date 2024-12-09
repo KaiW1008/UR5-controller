@@ -5,8 +5,9 @@ import rospy
 
 if __name__ == "__main__":
     try:  
-        # Initialize the UR5MotionLibrary
         rospy.init_node('ur5_motion_1', anonymous=True)  
+        
+        # Initialize the UR5MotionLibrary
         controller = UR5MotionLibrary()
     
         # Joint-space motion example
@@ -15,6 +16,7 @@ if __name__ == "__main__":
         point1 = [0.5, 0.5, 0.5, 0.5, 0.5, 0.5]
         point2 = [-1.0, -1.0, -1.0, -1.0, -1.0, -1.0]
         
+        rospy.sleep(2) # Sleep time for demonstration
         rospy.loginfo("Joint movement demo started.")
         rospy.loginfo(f"Parameters: Point1: {point1}, Point2: {point2}, Velocity: {velocity}, Acceleration: {acceleration}")
         

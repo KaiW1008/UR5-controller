@@ -13,20 +13,20 @@ catkin_package(
 )
 
 catkin_install_python(PROGRAMS
-  scripts/motion1_test.py
-  scripts/motion2_test.py
-  scripts/sin_wave_publisher.py
-  scripts/API_demo.py
-  scripts/API_LLM.py
+  src/motion1_test.py
+  src/motion2_test.py
+  src/sin_wave_publisher.py
+  src/API_demo.py
+  src/API_LLM.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
-install(DIRECTORY scripts/motion_library/
+install(DIRECTORY src/motion_library/
     DESTINATION ${CATKIN_PACKAGE_PYTHON_DESTINATION}/motion_library
     FILES_MATCHING PATTERN "*.py"
 )
 
-install(DIRECTORY scripts/API/
+install(DIRECTORY src/API/
     DESTINATION ${CATKIN_PACKAGE_PYTHON_DESTINATION}/API
     FILES_MATCHING PATTERN "*.py"
 )

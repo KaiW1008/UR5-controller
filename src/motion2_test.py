@@ -6,9 +6,12 @@ import rospy
 if __name__ == "__main__":
     try:  
         rospy.init_node('ur5_motion_2', anonymous=True)  
+        
         # Initialize the UR5MotionLibrary
         controller = UR5MotionLibrary()
         
+        
+        rospy.sleep(3) # Sleep time for demonstration
         rospy.loginfo("Cartesian movement demo started.")
 
         # Cartesian-space motion example

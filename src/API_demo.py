@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from motion_library.ur5_motion_library import UR5MotionAPI
+from API.robot_API import UR5MotionAPI
 import rospy
 
 if __name__ == "__main__":
@@ -24,7 +24,7 @@ if __name__ == "__main__":
         
         rospy.sleep(2)
 
-        # Fetch robot state
+        # Get robot state
         state = api.get_robot_state()
         if state:
             rospy.loginfo("Current Robot State: %s", state)

@@ -1,22 +1,19 @@
-from motion_library.ur5_motion_library import UR5MotionAPI
+from API.robot_API import UR5MotionAPI
 from transformers import AutoModelForCausalLM, AutoTokenizer
-import rospy
 
 class CodeSuggestionLLM:
     """
-    Lightweight LLM to generate Python code suggestions for UR5MotionAPI.
+    Interface to generate Python code suggestions for UR5MotionAPI.
     """
     def __init__(self, model_name="EleutherAI/gpt-neo-125M"):
         print("Initialization started...")
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
 
-        # 设置 pad_token
         if self.tokenizer.pad_token is None:
             self.tokenizer.pad_token = self.tokenizer.eos_token
 
-        print("Tokenizer initialized.")
         self.model = AutoModelForCausalLM.from_pretrained(model_name)
-        print("Model initialization completed.")
+        print("Initialization completed.")
 
     def generate_code(self, user_input, max_new_tokens=300):
         """
@@ -60,7 +57,6 @@ print("Current robot state:", robot_state)
 # Task: "{user_input}"
 # Python code:
 """
-        print(f"Prompt sent to model:\n{prompt}")  # 调试信息
         inputs = self.tokenizer(prompt, return_tensors="pt", padding=True, truncation=True)
         outputs = self.model.generate(
             inputs["input_ids"],
@@ -69,20 +65,15 @@ print("Current robot state:", robot_state)
             pad_token_id=self.tokenizer.pad_token_id
         )
         code = self.tokenizer.decode(outputs[0], skip_special_tokens=True)
-        print(f"Generated Code:\n{code}")  # 打印生成的代码
+        print(f"Generated Code:\n{code}")   
         return code
 
 def main():
-    """
-    Main function to interact with the user, generate code, and execute it.
-    """
-    print("Program started...")
+
     llm = CodeSuggestionLLM()
-    rospy.init_node('ur5_motion_copilot', anonymous=True)
-    api = UR5MotionAPI()
 
     print("Welcome to UR5MotionAPI Co-Pilot!")
-    print("Describe your task, and I'll generate Python code for you.")
+    print("Describe your task, and Python code will be generated.")
     print("Type 'exit' to quit.\n")
 
     while True:
@@ -96,12 +87,7 @@ def main():
             suggestion = llm.generate_code(user_input)
             print("Generated Code:\n")
             print(suggestion)
-
-            # 执行生成的代码
-            print("\nExecuting Code...\n")
-            exec(suggestion, {"api": api, "UR5MotionAPI": UR5MotionAPI, "rospy": rospy})
-        except SyntaxError as e:
-            print(f"Generated code has syntax errors: {e}")
+            
         except Exception as e:
             print(f"Error: {e}")
 
