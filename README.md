@@ -29,6 +29,25 @@ lightweight PyTorch (only for testing)
 dpip install torch==1.13.1+cpu torchvision==0.14.1+cpu -f https://download.pytorch.org/whl/torch_stable.html
 ```
 
+## Setup
+Creat a ROS workspace:
+```bash
+source /opt/ros/noetic/setup.bash
+mkdir -p ~/ros_workspace/src
+cd ~/ros_workspace
+catkin_make
+source devel/setup.bash
+```
+Git clone code 
+```bash
+cd ~/ros_workspace/src
+git clone https://github.com/KaiW1008/UR5-controller.git
+cd ~/ros_workspace
+catkin_make
+source devel/setup.bash
+```
+Now you should be able to run the demostrations below.
+
 ## Usage
 
 #### Sine wave movement 
