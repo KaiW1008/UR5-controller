@@ -8,6 +8,7 @@ This project provides a simulation environment for controlling a UR5 robot in RO
 ## Dependencies
 #### Python Packages
 ROS-noetic is in used for this project.
+Install Universal robots pacakge:
 ```bash
 sudo apt-get install ros-noetic-universal-robots
 ```
