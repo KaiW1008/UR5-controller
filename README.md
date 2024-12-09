@@ -32,6 +32,24 @@ dpip install torch==1.13.1+cpu torchvision==0.14.1+cpu -f https://download.pytor
 
 #### Sine wave movement 
 ```bash
-roslau
+roslaunch ur5_control ur5_sin_wave.launch 
 ```
+#### Motion 1: joint movement (with library) 
+```bash
+roslaunch ur5_control motion1_demo.launch
+```
+#### Motion 2: cartesian space movement (with library) 
+```bash
+roslaunch ur5_control motion2_demo.launch
+```
+#### API demostrations (motion 1, motion2, get-robot state)
+```bash
+roslaunch ur5_control API_demo.launch 
+```
+#### co-pilot interface for motions-API
+```bash
+rosrun ur5_control API_LLM.py
+```
+-Example use: 
+ Describe your task: Move the robot in joint space from [0.0, 0.0, 0.0, 0.0, 0.0, 0.0] to [1.0, 0.5, 0.2, 0.1, 0.0, 0.0] with velocity 0.2 and acceleration 0.1
 
