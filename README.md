@@ -32,17 +32,16 @@ dpip install torch==1.13.1+cpu torchvision==0.14.1+cpu -f https://download.pytor
 ## Setup
 Creat a ROS workspace:
 ```bash
-source /opt/ros/noetic/setup.bash
-mkdir -p ~/ros_workspace/src
-cd ~/ros_workspace
+mkdir -p ~/ur5_control_ws/src
+cd ~/ur5_control_ws
 catkin_make
 source devel/setup.bash
 ```
 Git clone code 
 ```bash
-cd ~/ros_workspace/src
+cd ~/ur5_control_ws/src
 git clone https://github.com/KaiW1008/UR5-controller.git
-cd ~/ros_workspace
+cd ~/ur5_control_ws
 catkin_make
 source devel/setup.bash
 ```
